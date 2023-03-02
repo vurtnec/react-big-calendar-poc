@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import BigCalendar from 'react-big-calendar'
+import {Calendar, momentLocalizer} from 'react-big-calendar'
 import moment from 'moment'
 import Year from './Year'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
@@ -8,7 +8,7 @@ import './styles.css'
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
-const localizer = BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
+const localizer = momentLocalizer(moment) // or globalizeLocalizer
 localizer.formats.yearHeaderFormat = 'YYYY'
 // localizer.messages.year = 'Year'
 
@@ -16,7 +16,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <BigCalendar
+        <Calendar
           localizer={localizer}
           events={[]}
           toolbar={true}

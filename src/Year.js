@@ -2,7 +2,7 @@
 import React from 'react'
 import moment from 'moment'
 
-import dates from 'react-big-calendar/lib/utils/dates'
+import { startOf, add } from 'react-big-calendar/lib/utils/dates'
 import { navigate } from 'react-big-calendar/lib/utils/constants'
 
 function createCalendar(currentDate) {
@@ -119,11 +119,11 @@ class Year extends React.Component {
     let { date, ...props } = this.props
     let range = Year.range(date)
     const months = []
-    const firstMonth = dates.startOf(date, 'year')
+    const firstMonth = startOf(date, 'year')
 
     for (let i = 0; i < 12; i++) {
       months.push(
-        <Calendar key={i + 1} date={dates.add(firstMonth, i, 'month')} />
+        <Calendar key={i + 1} date={add(firstMonth, i, 'month')} />
       )
     }
 
@@ -136,16 +136,16 @@ class Year extends React.Component {
 // }
 
 Year.range = date => {
-  return [dates.startOf(date, 'year')]
+  return [startOf(date, 'year')]
 }
 
 Year.navigate = (date, action) => {
   switch (action) {
     case navigate.PREVIOUS:
-      return dates.add(date, -1, 'year')
+      return add(date, -1, 'year')
 
     case navigate.NEXT:
-      return dates.add(date, 1, 'year')
+      return add(date, 1, 'year')
 
     default:
       return date
